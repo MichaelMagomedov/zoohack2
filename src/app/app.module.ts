@@ -9,10 +9,11 @@ import {ConfigActions} from './ThemeOptions/store/config.actions';
 import {AppRoutingModule} from './app-routing.module';
 import {LoadingBarRouterModule} from '@ngx-loading-bar/router';
 import {CommonModule} from '@angular/common';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AppComponent} from './app.component';
 import {GoogleMapsModule} from '@angular/google-maps';
-import {NotifierModule, NotifierOptions} from 'angular-notifier';
+import {NotifierModule} from 'angular-notifier';
+import {CookieService} from 'ngx-cookie-service';
 
 // BOOTSTRAP COMPONENTS
 
@@ -46,6 +47,8 @@ import {FooterComponent} from './Layout/Components/footer/footer.component';
 
 import {InfoCardsComponent} from './MainPages/infoCards/info-cards.component';
 import {InfoCardComponent} from './MainPages/infoCard/info-card.component';
+import {LoginBoxedComponent} from './MainPages/login/login-boxed.component';
+import {RequestProcessInterceptor} from './Utils/Interceptors/RequestProcessInterceptor';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     suppressScrollX: true
@@ -77,7 +80,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         FooterComponent,
 
         InfoCardsComponent,
-        InfoCardComponent
+        InfoCardComponent,
+        LoginBoxedComponent
     ],
     imports: [
         GoogleMapsModule,
@@ -120,6 +124,12 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
             DEFAULT_PERFECT_SCROLLBAR_CONFIG,
             // DEFAULT_DROPZONE_CONFIG,
         },
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: RequestProcessInterceptor,
+            multi: true
+        },
+        CookieService,
         ConfigActions,
     ],
     bootstrap: [AppComponent]

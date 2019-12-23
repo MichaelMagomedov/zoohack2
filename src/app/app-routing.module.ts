@@ -3,18 +3,19 @@ import {Routes, RouterModule} from '@angular/router';
 import {BaseLayoutComponent} from './Layout/base-layout/base-layout.component';
 import {InfoCardsComponent} from './MainPages/infoCards/info-cards.component';
 import {InfoCardComponent} from './MainPages/infoCard/info-card.component';
+import {LoginBoxedComponent} from './MainPages/login/login-boxed.component';
 
 const routes: Routes = [
     {
-        path: '',
+        path: 'card',
         component: BaseLayoutComponent,
         children: [
             {path: '', component: InfoCardsComponent},
             {path: 'card/:id', component: InfoCardComponent},
         ]
-
     },
-    {path: '**', redirectTo: ''}
+    {path: '', component: LoginBoxedComponent},
+    {path: '**', redirectTo: 'card'}
 ];
 
 @NgModule({

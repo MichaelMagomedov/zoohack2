@@ -1,0 +1,49 @@
+<div class="h-100 bg-animation">
+  <div class="d-flex h-100 justify-content-center align-items-center">
+    <div class="mx-auto app-login-box col-md-8">
+      <div class="modal-dialog w-100 mx-auto">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="h5 modal-title text-center">
+              <h4 class="mt-2">
+                <div>Вход</div>
+                <span>в административную панель</span></h4>
+            </div>
+            <form ngForm #authForm="ngForm">
+              <div class="form-group">
+                <div><input
+                    required
+                    name="email"
+                    #userEmail="ngModel"
+                    [(ngModel)]="user.email"
+                    type="email" placeholder="Введите email..."
+                    aria-required="true" class="form-control">
+                </div>
+              </div>
+              <div role="group" class="form-group">
+                <div><input
+                    required
+                    name="password"
+                    #userEmail="ngModel"
+                    [(ngModel)]="user.password"
+                    type="password" placeholder="Введите password..."
+                    aria-required="true" class="form-control"></div>
+              </div>
+            </form>
+            <div class="divider"></div>
+          </div>
+          <div class="modal-footer clearfix">
+            <div class="float-right">
+              <button type="button"
+                      (click)="auth()"
+                      [disabled]="user.email.length === 0 || user.password.length === 0"
+                      class="btn btn-primary btn-lg">
+                Вход
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
