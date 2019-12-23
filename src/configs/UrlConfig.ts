@@ -1,3 +1,3 @@
 export class UrlConfig {
-    static API = 'https://api.superwater.tech';
+    static API = 'https://problem-support.com';
 }

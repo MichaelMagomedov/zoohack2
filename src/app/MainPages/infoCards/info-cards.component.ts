@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {UrlConfig} from '../../../configs/UrlConfig';
 import {NotifierService} from 'angular-notifier';
+import {CookieService} from 'ngx-cookie-service';
 
 @Component({
     selector: 'app-info-cards',
@@ -12,11 +13,11 @@ export class InfoCardsComponent implements OnInit {
     private cards = [];
     private categories = [];
     private currentCat = null;
-    private timerInterval;
 
     constructor(
         private http: HttpClient,
-        private notifier: NotifierService
+        private notifier: NotifierService,
+        private storage: CookieService
     ) {
     }
 
@@ -45,13 +46,10 @@ export class InfoCardsComponent implements OnInit {
 
     ngOnInit() {
         this.loadCards(false);
-        this.timerInterval = setInterval(() => {
+        const interval = setInterval(() => {
             this.loadCards(true);
         }, 3000);
-    }
-
-    routerOnDeactivate() {
-        clearInterval(this.timerInterval);
+        this.storage.set('cards', interval.toString());
     }
 
 
