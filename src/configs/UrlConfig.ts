@@ -1,3 +1,3 @@
 export class UrlConfig {
-    static API = 'https://problem-support.com';
+    static API = 'https://www.problem-support.com';
 }

@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {UrlConfig} from '../../../configs/UrlConfig';
+import {NotifierService} from 'angular-notifier';
+import {Route, Router} from '@angular/router';
+import {CookieService} from 'ngx-cookie-service';
 
 @Component({
     selector: 'app-login-boxed',
@@ -14,7 +17,11 @@ export class LoginBoxedComponent implements OnInit {
         password: ''
     };
 
-    constructor(private http: HttpClient) {
+    constructor(
+        private http: HttpClient,
+        private router: Router,
+        private storage: CookieService,
+    ) {
     }
 
     auth() {
@@ -26,11 +33,14 @@ export class LoginBoxedComponent implements OnInit {
             password: this.user.password,
         })
             .toPromise()
-            .then((data) => {
-                console.log(data);
+            .then((resp: any) => {
+                this.storage.set('auth', resp.access_token);
+                this.router.navigateByUrl('/card');
             })
             .catch((error) => {
-                console.log(error);
+                this.user.email = '';
+                this.user.password = '';
+                alert('Неверный логин или пароль');
             });
     }
 
