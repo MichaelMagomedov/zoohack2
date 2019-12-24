@@ -1,0 +1,35 @@
+<div class="h-100 bg-animation">
+  <div class="d-flex h-100 justify-content-center align-items-center">
+    <div class="mx-auto app-login-box col-md-8">
+      <div class="modal-dialog w-100 mx-auto">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="h5 modal-title text-center">
+              <h4 class="mt-2">
+                <div>Загрузка примера аудиофайла</div>
+              </h4>
+            </div>
+            <form ngForm #testForm="ngForm">
+              <div class="form-group">
+                <div class="container">
+                  <input type="file" name="photo" ng2FileSelect [uploader]="uploader" />
+
+                </div>
+              </div>
+            </form>
+            <div class="divider"></div>
+          </div>
+          <div class="modal-footer clearfix">
+            <div class="float-right">
+              <button type="button" class="btn btn-primary btn-lg"
+                      (click)="uploader.uploadAll()"
+                      [disabled]="!uploader.getNotUploadedItems().length" >
+                Загрузить
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
