@@ -11,7 +11,7 @@ import {UrlConfig} from '../../../configs/UrlConfig';
 export class RecordMicComponent implements OnInit {
 
     public uploader: FileUploader = new FileUploader({
-        url: `${UrlConfig.API}/oauth/token`,
+        url: `${UrlConfig.API}/audio`,
         itemAlias: 'audio'
     });
 
