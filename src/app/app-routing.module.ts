@@ -15,7 +15,7 @@ const routes: Routes = [
             {path: 'card/:id', component: InfoCardComponent},
         ]
     },
-    {path: 'rec', component: RecordMicComponent},
+   
     {path: '', component: LoginBoxedComponent},
     {path: '**', redirectTo: 'card'}
 ];
