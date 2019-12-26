@@ -7,7 +7,7 @@
       {{ category }}</button>
   </div>
   <div *ngFor="let card of filterCards(cards)" class="col-md-4 mb-3">
-    <div class="main-card card" [routerLink]="['/card', card.id]" style="cursor: pointer">
+    <div class="main-card card" [routerLink]="['/card']" [state]="{id: card.id}" style="cursor: pointer">
       <div class="card-body">
         <p>{{ card.text.substring(0, 150) }}...</p>
         <div class="widget-content p-0">
