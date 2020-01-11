@@ -12,7 +12,7 @@ const routes: Routes = [
         component: BaseLayoutComponent,
         children: [
             {path: '', component: InfoCardsComponent},
-            {path: 'card/:id', component: InfoCardComponent},
+            {path: ':id', component: InfoCardComponent},
         ]
     },
     {path: 'rec', component: RecordMicComponent},
