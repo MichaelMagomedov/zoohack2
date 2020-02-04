@@ -1,0 +1,40 @@
+<div class="main-card pb-3 mb-2 card">
+  <div class="card-body">
+
+    <div class="position-relative form-group">
+      <label for="email">Email для отправки уведомлений</label>
+      <input class="form-control"
+             id="email"
+             name="aemail"
+             accept="audio/mpeg"
+             [(ngModel)]="email"
+             placeholder="Введите Email"
+             type="email">
+      <br/>
+      <button type="button" class="btn btn-primary btn-lg"
+              (click)="save()"
+              [disabled]="loading">
+        Созранить
+      </button>
+
+    </div>
+
+    <div class="position-relative form-group">
+      <label for="file">Mp3 файл приветствия</label>
+      <br/>
+      <input id="file"
+             name="file"
+             placeholder="Выберите File"
+             type="file"
+             ng2FileSelect [uploader]="uploader"/>
+      <br/>
+      <br/>
+      <button type="button" class="btn btn-primary btn-lg"
+              (click)="uploader.uploadAll()"
+              [disabled]="!uploader.getNotUploadedItems().length">
+        Загрузить
+      </button>
+
+    </div>
+  </div>
+</div>

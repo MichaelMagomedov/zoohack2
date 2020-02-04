@@ -49,7 +49,7 @@ import {FooterComponent} from './Layout/Components/footer/footer.component';
 import {InfoCardsComponent} from './MainPages/infoCards/info-cards.component';
 import {InfoCardComponent} from './MainPages/infoCard/info-card.component';
 import {LoginBoxedComponent} from './MainPages/login/login-boxed.component';
-import {RecordMicComponent} from './MainPages/record/record-mic.component';
+import {SettingComponent} from './MainPages/setting/setting.component';
 import {RequestProcessInterceptor} from './Utils/Interceptors/RequestProcessInterceptor';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -84,7 +84,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         InfoCardsComponent,
         InfoCardComponent,
         LoginBoxedComponent,
-        RecordMicComponent
+        SettingComponent
     ],
     imports: [
         GoogleMapsModule,
